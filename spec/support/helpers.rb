@@ -3,6 +3,6 @@ module Helpers
     visit login_path
     fill_in "E-Mail", with: user.email
     fill_in "Password", with: user.password
-    click_on "Log in"
+    click_on "Sign In"
   end
 end

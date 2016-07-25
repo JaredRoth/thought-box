@@ -27,21 +27,20 @@ feature "User can log in" do
       end
     end
 
-    # context "when they click on Sign In" do
-    #   it "redirects to the sign-in form and allows existing users to sign in" do
-    #     user = User.create password: 'password', password_confirmation: 'password', email: 'email@email.com'
-    #     visit signin_path
-    #
-    #     click_on "Sign In"
-    #
-    #     expect(current_path).to eq(login_path)
-    #     fill_in "E-Mail", with: user.email
-    #     fill_in "Password", with: user.password
-    #     click_on "Sign In"
-    #
-    #     expect(current_path).to eq(root_path)
-    #     expect(current_user).to eq(user)
-    #   end
-    # end
+    context "when they click on Sign In" do
+      it "redirects to the sign-in form and allows existing users to sign in" do
+        user = User.create password: 'password', password_confirmation: 'password', email: 'email@email.com'
+        visit signin_path
+
+        click_on "Sign In"
+
+        expect(current_path).to eq(login_path)
+        fill_in "E-Mail", with: user.email
+        fill_in "Password", with: user.password
+        click_on "Sign In"
+
+        expect(current_path).to eq(root_path)
+      end
+    end
   end
 end
