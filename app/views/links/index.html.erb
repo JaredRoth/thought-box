@@ -6,14 +6,18 @@
   <div class="form-group">
     <%= f.text_field :url, placeholder: "URL", class:"form-control" %><br>
   </div>
-  <br>
   <%= f.submit "Submit Link", class: "btn btn-default"%>
 <% end %>
-<ul class="my-links">
+<br>
+<section class="my-links">
   <% @links.each do |link| %>
     <% unless link.id == nil %>
       <% status = link.read === true ? "Unread" : "Read" %>
-      <li><%= "#{link.title}: #{link.url}" %><%= button_to "Mark as #{status}", link_path(link), method: :patch%></li>
+      <div id="link<%= link.id %>">
+        <%= "#{link.title}: #{link.url}" %>
+        <%= button_to "Mark as #{status}", link_path(link), method: :patch %>
+        <%= button_to "Edit", edit_link_path(link), method: :get %>
+      </div>
     <% end %>
   <% end %>
-</ul>
+</section>

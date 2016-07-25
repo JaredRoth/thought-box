@@ -1,0 +1,9 @@
+<%= form_for @link do |f| %>
+  <div class="form-group">
+    <%= f.text_field :title, placeholder: @link.title, class:"form-control" %><br>
+  </div>
+  <div class="form-group">
+    <%= f.text_field :url, placeholder: @link.url, class:"form-control" %><br>
+  </div>
+  <%= f.submit "Update Link", class: "btn btn-default"%>
+<% end %>

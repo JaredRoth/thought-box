@@ -5,15 +5,11 @@ feature "User can update a link status" do
     it 'should be able to mark links as read and stay on the page' do
       user = User.create password: 'password', password_confirmation: 'password', email: 'email@email.com'
       sign_in(user)
-
-      visit root_path
-      fill_in "Title", with: "Test the Title"
-      fill_in "URL", with: "http://www.google.com"
-      click_on "Submit Link"
+      create_link
 
       expect(user.links.first.read).to eq(false)
 
-      within(".my-links") do
+      within("#link#{user.links.first.id}") do
         click_on "Mark as Read"
       end
 
@@ -23,17 +19,13 @@ feature "User can update a link status" do
     it 'should be able to mark links as unread and stay on the page' do
       user = User.create password: 'password', password_confirmation: 'password', email: 'email@email.com'
       sign_in(user)
+      create_link
 
-      visit root_path
-      fill_in "Title", with: "Test the Title"
-      fill_in "URL", with: "http://www.google.com"
-      click_on "Submit Link"
-
-      within(".my-links") do
+      within("#link#{user.links.first.id}") do
         click_on "Mark as Read"
       end
 
-      within(".my-links") do
+      within("#link#{user.links.first.id}") do
         click_on "Mark as Unread"
       end
 
@@ -41,6 +33,3 @@ feature "User can update a link status" do
     end
   end
 end
-
-
-# Read links should be stylistically differentiated from unread links. You could gray them out or use a strike through.
