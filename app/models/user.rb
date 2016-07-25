@@ -5,4 +5,6 @@ class User < ActiveRecord::Base
   validates :email,           presence: true, uniqueness: true
   validates :email,           format: { with: VALID_EMAIL_REGEX }
   validates :password, length: { minimum: 8 }, allow_nil: true
+
+  has_many :links
 end

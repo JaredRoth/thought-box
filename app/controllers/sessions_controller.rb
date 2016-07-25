@@ -13,7 +13,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to root_path
     else
-      # flash.now[:error] = @user.errors.full_messages.join(", ")
+      flash.now[:error] = "Log in info does not match our records"
       render :new
     end
   end

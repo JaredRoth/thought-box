@@ -1,1 +1,16 @@
 <%= link_to "Sign Out", logout_path %>
+<%= form_for [current_user, @link], url: user_links_path(current_user, @link) do |f| %>
+  <div class="form-group">
+    <%= f.text_field :title, placeholder: "Title", class:"form-control" %><br>
+  </div>
+  <div class="form-group">
+    <%= f.text_field :url, placeholder: "URL", class:"form-control" %><br>
+  </div>
+  <br>
+  <%= f.submit "Submit Link", class: "btn btn-default"%>
+<% end %>
+<ul>
+  <% @links.each do |link| %>
+    <li><%= "#{link.title}: #{link.url}" %></li>
+  <% end %>
+</ul>
