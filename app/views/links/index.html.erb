@@ -15,7 +15,7 @@
       <% status = link.read === true ? "Unread" : "Read" %>
       <div id="link<%= link.id %>">
         <%= "#{link.title}: #{link.url}" %>
-        <%= button_to "Mark as #{status}", link_path(link), method: :patch %>
+        <span class="read-status" data-id="<%= link.id %>"><%= "Mark as #{status}"%></span>
         <%= button_to "Edit", edit_link_path(link), method: :get %>
       </div>
     <% end %>

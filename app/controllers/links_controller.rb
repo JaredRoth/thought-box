@@ -24,16 +24,11 @@ class LinksController < ApplicationController
 
   def update
     @link = Link.find(params[:id])
-    if params[:link]
-      if @link.update(link_params)
-        redirect_to root_path
-      else
-        flash.now[:error] = @link.errors.full_messages.join(", ")
-        render :edit
-      end
-    else
-      @link.update(read: !@link.read)
+    if @link.update(link_params)
       redirect_to root_path
+    else
+      flash.now[:error] = @link.errors.full_messages.join(", ")
+      render :edit
     end
   end
 
