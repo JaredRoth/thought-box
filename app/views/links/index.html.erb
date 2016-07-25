@@ -1,5 +1,5 @@
 <%= link_to "Sign Out", logout_path %>
-<%= form_for [current_user, @link], url: user_links_path(current_user, @link) do |f| %>
+<%= form_for @link, url: links_path do |f| %>
   <div class="form-group">
     <%= f.text_field :title, placeholder: "Title", class:"form-control" %><br>
   </div>
@@ -9,8 +9,11 @@
   <br>
   <%= f.submit "Submit Link", class: "btn btn-default"%>
 <% end %>
-<ul>
+<ul class="my-links">
   <% @links.each do |link| %>
-    <li><%= "#{link.title}: #{link.url}" %></li>
+    <% unless link.id == nil %>
+      <% status = link.read ? "Read" : "Unread" %>
+      <li><%= "#{link.title}: #{link.url}" %><%= button_to "Mark as #{status}", link_path(link) %></li>
+    <% end %>
   <% end %>
 </ul>
