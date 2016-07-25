@@ -1,28 +1,20 @@
-== README
+I am ashamed of this.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+I took almost 5 hours to do the first two iterations because of few cases of "forgot how to rails"
 
-Things you may want to cover:
+Also accidentally initialized the project without Sprockets... so that sucked up half an hour later re-configuring it in all it's various places.
 
-* Ruby version
+The [finished product](http://whispering-caverns-83252.herokuapp.com/) is hideous with __zero__ styling whatsoever and with iteration5 not complete.
 
-* System dependencies
+I'm really unhappy with this because of how much time I spent on _stupidly simple_ rails things that I just haven't done in a while (and some of them, I only did once a few months ago). Things that I found hard to google that would be easy to explain to a person, so they ended up sucking away hours where it could have been minutes or less if I wasn't isolated.
 
-* Configuration
+Additionally, I tend to drown in options when the "right" way to do things isn't prescribed or obvious. I re-wrote me log-in process like 4 times over the first 2 hours because of this.
 
-* Database creation
+So basically, the structure of the evaluation puts me at my absolute worst productivity-wise for two main reasons:
+ - working in isolation
+ - creation from scratch
 
-* Database initialization
+Anyway... there's my rant. I'm mostly just unhappy with myself because I feel I did _very_ poorly by my standards.
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+[Again, here's the app in deployment](http://whispering-caverns-83252.herokuapp.com/)
+[And the repo](https://github.com/JaredRoth/thought-box)
