@@ -12,8 +12,8 @@
 <ul class="my-links">
   <% @links.each do |link| %>
     <% unless link.id == nil %>
-      <% status = link.read ? "Read" : "Unread" %>
-      <li><%= "#{link.title}: #{link.url}" %><%= button_to "Mark as #{status}", link_path(link) %></li>
+      <% status = link.read === true ? "Unread" : "Read" %>
+      <li><%= "#{link.title}: #{link.url}" %><%= button_to "Mark as #{status}", link_path(link), method: :patch%></li>
     <% end %>
   <% end %>
 </ul>
