@@ -29,7 +29,7 @@
     <% unless link.id == nil %>
       <% status = link.read === true ? "Read" : "Unread" %>
       <div class="link collection-item avatar" id="link<%= link.id %>" data-status="<%= link.read %>" data-title="<%= link.title %>">
-        <a href="/links/1/edit"><i class='material-icons circle teal lighten-2'>mode_edit</i></a>
+        <a href="/links/<%= link.id %>/edit"><i class='material-icons circle teal lighten-2'>mode_edit</i></a>
         <span class="title"><%= "#{link.title}" %></span>
         <p><%= "#{link.url}" %></p>
         <span class="read-status secondary-content btn" data-id="<%= link.id %>"><%= status %></span>

@@ -9,7 +9,7 @@ feature "User can update a link's contents" do
       link = user.links.first
 
       within("#link#{link.id}") do
-        click_on "Edit"
+        click_on "mode_edit"
       end
 
       expect(current_path).to eq(edit_link_path(link))
@@ -21,7 +21,7 @@ feature "User can update a link's contents" do
       create_link
 
       within("#link#{user.links.first.id}") do
-        click_on "Edit"
+        click_on "mode_edit"
       end
 
       fill_in user.links.first.title, with: "Updated Title"
@@ -44,7 +44,7 @@ feature "User can update a link's contents" do
       create_link
 
       within("#link#{user.links.first.id}") do
-        click_on "Edit"
+        click_on "mode_edit"
       end
 
       fill_in user.links.first.title, with: "Updated Title"
