@@ -4,7 +4,7 @@ $(document).ready(function(){
   $("#unread-filter").on('click', filterUnread);
   $("#reset-status-filter").on('click', resetStatusFilter);
   $("#sort").on('click', sortByTitle);
-  $("#search").on('keyup', filterThoughts);
+  $("#search").on('keyup', searchThoughts);
 });
 
 function changeStatus() {
@@ -25,12 +25,12 @@ function changeStatus() {
   });
 }
 
-function filterThoughts() {
+function searchThoughts() {
   var filter = $(this).val();
 
   $(".link").each(function(){
-    if ($(this).clone().children('form').remove().end()
-                       .children('span').remove().end()
+    if ($(this).clone().children('a').remove().end()
+                       .children('.read-status').remove().end()
                        .text().search(new RegExp(filter, "i")) < 0) {
       $(this).hide();
     } else {
@@ -41,7 +41,7 @@ function filterThoughts() {
 
 function filterRead() {
   $(".link").each(function(){
-    if ($(this).children('span').text() === "Read") {
+    if ($(this).data('status') === true) {
       $(this).show();
     } else {
       $(this).hide();
@@ -51,7 +51,7 @@ function filterRead() {
 
 function filterUnread() {
   $(".link").each(function(){
-    if ($(this).children('span').text() === "Read") {
+    if ($(this).data('status') === true) {
       $(this).hide();
     } else {
       $(this).show();

@@ -1,4 +1,5 @@
-<%= link_to "Sign Out", logout_path %>
+<%= link_to "Sign Out", logout_path, class: "btn right" %>
+<h4>Create a new link</h4>
 <%= form_for @link, url: links_path do |f| %>
   <div class="form-group">
     <%= f.text_field :title, placeholder: "Title", class:"form-control" %><br>
@@ -21,14 +22,15 @@
     <button id="sort" class="btn" data-sorted="false"><i class="material-icons right">sort_by_alpha</i>Sort by Title</button>
   </div>
 </section>
-<section class="my-links">
+<section class="my-links collection">
   <% @links.each do |link| %>
     <% unless link.id == nil %>
       <% status = link.read === true ? "Read" : "Unread" %>
-      <div class="link" id="link<%= link.id %>" data-status="<%= link.read %>" data-title="<%= link.title %>">
-        <%= "#{link.title}: #{link.url}" %>
-        <span class="read-status" data-id="<%= link.id %>"><%= status %></span>
-        <%= button_to "Edit", edit_link_path(link), method: :get %>
+      <div class="link collection-item avatar" id="link<%= link.id %>" data-status="<%= link.read %>" data-title="<%= link.title %>">
+        <a href="/links/1/edit"><i class='material-icons circle teal lighten-2'>mode_edit</i></a>
+        <span class="title"><%= "#{link.title}" %></span>
+        <p><%= "#{link.url}" %></p>
+        <span class="read-status secondary-content btn" data-id="<%= link.id %>"><%= status %></span>
       </div>
     <% end %>
   <% end %>

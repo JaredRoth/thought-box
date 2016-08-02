@@ -7,10 +7,12 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <% flash.each do |type, message| %>
-    <%= content_tag :div, message.html_safe, class: "#{type} flashy", id: "flash_notice" %>
-    <% end %>
     <div class="container">
+      <br>
+      <br>
+      <% flash.each do |type, message| %>
+      <%= content_tag :div, message.html_safe, class: "card-panel red lighten-2 white-text", id: "flash_notice" %>
+      <% end %>
       <%= yield %>
     </div>
 
