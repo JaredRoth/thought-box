@@ -19,8 +19,6 @@ group :development, :test do
   gem 'capybara'
   gem 'launchy'
   gem 'selenium-webdriver'
-  gem 'teaspoon'
-  gem 'teaspoon-mocha'
 end
 
 group :development do
