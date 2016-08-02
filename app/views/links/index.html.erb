@@ -18,13 +18,14 @@
     <button id="read-filter" class="btn">Filter by Read</button>
     <button id="unread-filter" class="btn">Filter by Unread</button>
     <button id="reset-status-filter" class="btn">View all read statuses</button>
+    <button id="sort" class="btn" data-sorted="false"><i class="material-icons right">sort_by_alpha</i>Sort by Title</button>
   </div>
 </section>
 <section class="my-links">
   <% @links.each do |link| %>
     <% unless link.id == nil %>
       <% status = link.read === true ? "Read" : "Unread" %>
-      <div class="link" id="link<%= link.id %>" data-status="<%= link.read %>">
+      <div class="link" id="link<%= link.id %>" data-status="<%= link.read %>" data-title="<%= link.title %>">
         <%= "#{link.title}: #{link.url}" %>
         <span class="read-status" data-id="<%= link.id %>"><%= status %></span>
         <%= button_to "Edit", edit_link_path(link), method: :get %>

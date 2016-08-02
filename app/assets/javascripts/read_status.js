@@ -3,6 +3,7 @@ $(document).ready(function(){
   $("#read-filter").on('click', filterRead);
   $("#unread-filter").on('click', filterUnread);
   $("#reset-status-filter").on('click', resetStatusFilter);
+  $("#sort").on('click', sortByTitle);
   $("#search").on('keyup', filterThoughts);
 });
 
@@ -16,8 +17,8 @@ function changeStatus() {
     url: '/api/v1/links/' + linkId,
     dataType: "JSON",
     success: function(){
-      var newStatus = status === true ? 'false' : 'true';
-      statusMessage.parent().attr('data-status', newStatus);
+      var newStatus = status ? false : true;
+      statusMessage.parent().data('status', newStatus);
       var text = statusMessage.html() === "Unread" ? "Read" : "Unread";
       statusMessage.html(text);
     }
@@ -62,4 +63,25 @@ function resetStatusFilter() {
   $(".link").each(function(){
     $(this).show();
   });
+}
+
+function sortByTitle() {
+  var thoughts = $(".my-links").children(".link");
+  var sorted = $(this).data('sorted');
+
+  thoughts.sort(function(a,b){
+    var an = a.getAttribute('data-title').toLowerCase();
+    var bn = b.getAttribute('data-title').toLowerCase();
+
+    if(an > bn) {
+      return sorted ? -1 : 1;
+    }
+    if(an < bn) {
+      return sorted ? 1 : -1;
+    }
+    return 0;
+  });
+
+  $(this).data('sorted', !sorted);
+  thoughts.detach().appendTo(".my-links");
 }
