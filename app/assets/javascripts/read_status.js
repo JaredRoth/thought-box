@@ -16,7 +16,7 @@ function changeStatus() {
     url: '/api/v1/links/' + linkId,
     dataType: "JSON",
     success: function(){
-      var newStatus = status === 'true' ? 'false' : 'true';
+      var newStatus = status === true ? 'false' : 'true';
       statusMessage.parent().attr('data-status', newStatus);
       var text = statusMessage.html() === "Unread" ? "Read" : "Unread";
       statusMessage.html(text);
@@ -40,7 +40,7 @@ function filterThoughts() {
 
 function filterRead() {
   $(".link").each(function(){
-    if ($(this).data('status') === true) {
+    if ($(this).children('span').text() === "Read") {
       $(this).show();
     } else {
       $(this).hide();
@@ -50,10 +50,16 @@ function filterRead() {
 
 function filterUnread() {
   $(".link").each(function(){
-    if ($(this).data('status') === true) {
+    if ($(this).children('span').text() === "Read") {
       $(this).hide();
     } else {
       $(this).show();
     }
+  });
+}
+
+function resetStatusFilter() {
+  $(".link").each(function(){
+    $(this).show();
   });
 }
