@@ -9,13 +9,24 @@
   <%= f.submit "Submit Link", class: "btn btn-default"%>
 <% end %>
 <br>
+<section id="filters">
+  <div class="row">
+    <form id="live-search" action="" class="input-field" method="post">
+      <i class="material-icons prefix">search</i>
+      <input placeholder="Search Thoughts" type="text" class="text-input" id="search" name="search" />
+    </form>
+    <button id="read-filter" class="btn">Filter by Read</button>
+    <button id="unread-filter" class="btn">Filter by Unread</button>
+    <button id="reset-status-filter" class="btn">View all read statuses</button>
+  </div>
+</section>
 <section class="my-links">
   <% @links.each do |link| %>
     <% unless link.id == nil %>
-      <% status = link.read === true ? "Unread" : "Read" %>
-      <div id="link<%= link.id %>">
+      <% status = link.read === true ? "Read" : "Unread" %>
+      <div class="link" id="link<%= link.id %>" data-status="<%= link.read %>">
         <%= "#{link.title}: #{link.url}" %>
-        <span class="read-status" data-id="<%= link.id %>"><%= "Mark as #{status}"%></span>
+        <span class="read-status" data-id="<%= link.id %>"><%= status %></span>
         <%= button_to "Edit", edit_link_path(link), method: :get %>
       </div>
     <% end %>
