@@ -8,15 +8,18 @@ $(document).ready(function(){
 
 function changeStatus() {
   var linkId = $(this).data('id');
-  var status = $(this);
+  var statusMessage = $(this);
+  var status = statusMessage.parent().data('status');
 
   $.ajax({
     method: 'PATCH',
     url: '/api/v1/links/' + linkId,
     dataType: "JSON",
     success: function(){
-      var text = status.html() === "Unread" ? "Read" : "Unread";
-      status.html(text);
+      var newStatus = status === 'true' ? 'false' : 'true';
+      statusMessage.parent().attr('data-status', newStatus);
+      var text = statusMessage.html() === "Unread" ? "Read" : "Unread";
+      statusMessage.html(text);
     }
   });
 }
@@ -25,9 +28,9 @@ function filterThoughts() {
   var filter = $(this).val();
 
   $(".link").each(function(){
-    if ($(this).clone().children('form').remove().end().
-                        children('span').remove().end().
-                        text().search(new RegExp(filter, "i")) < 0) {
+    if ($(this).clone().children('form').remove().end()
+                       .children('span').remove().end()
+                       .text().search(new RegExp(filter, "i")) < 0) {
       $(this).hide();
     } else {
       $(this).show();
