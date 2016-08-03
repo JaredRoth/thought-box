@@ -27,4 +27,5 @@ group :development do
   gem 'spring'
 end
 
+gem 'database_cleaner', group: :test
 gem 'rails_12factor', group: :production
