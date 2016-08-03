@@ -20,4 +20,12 @@ module Helpers
     fill_in "URL", with: "http://www.google.com"
     click_on "Submit Link"
   end
+
+  def create_links
+    3.times do |num|
+      fill_in "Title", with: "Test the Title #{num}"
+      fill_in "URL", with: "http://www.google.com"
+      click_on "Submit Link"
+    end
+  end
 end
