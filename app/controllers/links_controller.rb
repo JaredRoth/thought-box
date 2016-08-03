@@ -1,11 +1,9 @@
 class LinksController < ApplicationController
+  before_action :authorize
+
   def index
-    if current_user
-      @links = current_user.links
-      @link = current_user.links.build
-    else
-      redirect_to signin_path
-    end
+    @links = current_user.links
+    @link = current_user.links.build
   end
 
   def create
