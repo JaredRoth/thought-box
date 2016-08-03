@@ -9,6 +9,9 @@ class ApplicationController < ActionController::Base
   end
 
   def authorize
-    redirect_to signin_path unless current_user
+    if !current_user
+      flash[:error] = "You must be logged in to use this app"
+      redirect_to signin_path
+    end
   end
 end
